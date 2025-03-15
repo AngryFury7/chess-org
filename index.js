@@ -1,14 +1,16 @@
+import {El , Search , Cm , Qn , Kn , Hr,Pw} from './movement.js'
 console.log('index.js is loaded successfully');
 
+let Activeblock = (element,className) => {
+    element.classList.add(className)
+    //classname should be string and should be like '.Active.whiteP' or ".Active.blackP"
+}
 
 // i am setting this as default thing and will change and i can do this first block.forEach as function which will run initially 
 let blocks = document.querySelectorAll('.blocks');
 blocks.forEach((value,index) => {
     value.classList.add(`block${index+1}`);
-    Activeblock = (element,className) => {
-        element.classList.add(className)
-        //classname should be string and should be like '.Active.whiteP' or ".Active.blackP"
-    }
+    
     let A = index+1; 
     let i = 0;
     for(i ; i<=7;i++){
@@ -31,10 +33,17 @@ blocks.forEach((value,index) => {
         }
 
         if(A<=16 && A>=1){
-            Activeblock(value,'Active');
+            if(A !== 99){
+             Activeblock(value,'Active');}
             Activeblock(value,'whiteP')
-
         }
+
+   
+
+
+
+
+
 
         if(A<=64 && A>=49){
             Activeblock(value,'Active');
@@ -104,171 +113,26 @@ blocks.forEach((value,index) => {
     }
 })
 
-//also add the class on clicked to track the hover effect 
 
 
-let Peices = [
-    {
-        currentPosition : [this.defaultPosition] , id  : "E1",
-        defaultPosition : 1,
-        color : "white"
-    },
-    {
-        currentPosition : [this.defaultPosition] , id : "H1",
-        defaultPosition : 2,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "C1",
-        defaultPosition : 3,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "K",
-        defaultPosition : 4,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "Q",
-        defaultPosition : 5,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "C2",
-        defaultPosition : 6,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "H2",
-        defaultPosition : 7,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "E2",
-        defaultPosition : 8,
-        color : "white"
-    },
-    {
-        currentPosition : [this.defaultPosition] , id : "P1",
-        defaultPosition : 9,
-        color : "white"
-    },
-    {
-        currentPosition : [this.defaultPosition] , id : "P2",
-        defaultPosition : 10,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P3",
-        defaultPosition : 11,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P4",
-        defaultPosition : 12,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P5",
-        defaultPosition : 13,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P6",
-        defaultPosition : 14,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P7",
-        defaultPosition : 15,
-        color : "white"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P8",
-        defaultPosition : 16,
-        color : "white"
-    },
-        {
-        currentPosition : [this.defaultPosition] , id : "P1",
-        defaultPosition : 49,
-        color : "black"
-    },
-    {
-        currentPosition : [this.defaultPosition] , id : "P2",
-        defaultPosition : 50,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P3",
-        defaultPosition : 51,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P4",
-        defaultPosition : 52,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P5",
-        defaultPosition : 53,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P6",
-        defaultPosition : 54,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P7",
-        defaultPosition : 55,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "P8",
-        defaultPosition : 56,
-        color : "black"
-    },
-    {
-        currentPosition : [this.defaultPosition] , id : "E1",
-        defaultPosition : 57,
-        color : "black"
-    },
-    {
-        currentPosition : [this.defaultPosition] , id : "H1",
-        defaultPosition : 58,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "C1",
-        defaultPosition : 59,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "K",
-        defaultPosition : 60,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "Q",
-        defaultPosition : 61,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "C2",
-        defaultPosition : 62,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "H2",
-        defaultPosition : 63,
-        color : "black"
-    },    {
-        currentPosition : [this.defaultPosition] , id : "E2",
-        defaultPosition : 64,
-        color : "black"
-    },
-]
-//these coordinates are with respective to 61 !;
 let X = [1,2,3,4,5,6,7,8];
 let Y = [1,2,3,4,5,6,7,8];
 
-// position will look something like this X[a],Y[b]
 
-//first we will have to figure out how this thing will move 
 
-AddImg = (element,color,type,) => {
+let AddImg = (element,color,type,) => {
     element.firstElementChild.setAttribute('src',`./svgs/${color}_${type}.svg`);
     //pass the color and type as string 
 }
 
-RemoveImg = (element) => {
+let RemoveImg = (element) => {
     element.firstElementChild.setAttribute('src',"");
 }
 
-Activeblock = (element,className) => {
-    element.classList.add(className)
-    //classname should be string and should be like '.Active.whiteP' or ".Active.blackP"
-}
 
 
-Removeblock = (element,className) => {
+
+let Removeblock = (element,className) => {
     element.classList.remove(className)
     //classname should be string and should be like '.Active.whiteP.horse' or ".Active.blackP.horse"
 }
@@ -285,84 +149,21 @@ document.querySelector('.testing').addEventListener('click',()=> {
 
 
 
-//now we will have to make the logic of finding possible moves to go !
-
-//if the position of pawn (white) is xA , yB then possible ways to go [xA,y(B-1)],[x(A+1),y(B-1)],[x(A-1),y(B-1)] and [xA,y(B-2)] if it is at its default position ;
-//if the position of pawn (white) is xA , yB then possible ways to go [xA,y(B+1)],[x(A+1),y(B+1)],[x(A-1),y(B+1)] and [xA,y(B+2)] if it is at its default position ;
 
 
-// if the position of the king is at xA, yB then it can move to these positions : [x(A+0),y(B+1)],[x(A+0),y(B-1)],[x(A+1),y(B+0)],[x(A-1),y(B+0)],[x(A+1),y(B+1)],[x(A+1),y(B-1)],[x(A+0),y(B+0)],[x(A+0),y(B+0)];
 
-
-// only show the hover effect to those where elements are already placed !;
-// first scan the positions where the peice can move and then render then colors 
-// then you can focus on the other things such as maintaining the arrays 
-
-
-// first make a function to scan on click and other like update information 
-
-
-let Search = (a,b) => {
-    let Arrayone = [];
-    let P = [];
-    if(a>=1 && a<=8 && b>=1 && b<=8){
-     let JP = document.querySelectorAll('.blocks').forEach((value,index) => {
-         if(Number(value.getAttribute("X")) === a){
-            Arrayone.push(value);
-        }
-
-        if(Arrayone.length === 8){
-            Arrayone.forEach((value,index) => {
-                if(Number(value.getAttribute("Y")) === b)
-                {
-                    P.push(value);
-                    return true
-                }
-            })
-        } 
-    });}
-    else{
-        P.push("Error : check your values !!!!!!!!!!!!!!!")
-    }
-    return P[0]
-} 
 
 //now i will have to make functions for the El / Hr / Cm / Kn / Qn / Pw so the can search and i can add two conditions for them 
 
 
-const El = () => {
-    
-    document.querySelectorAll('.El').forEach((value,index) => {
-        //does not matter weather it is white or black ;
-        let El_X = Number(value.getAttribute("X"));
-        let El_Y = Number(value.getAttribute("Y"));
-        let ArrayofmovementsEl = []
 
-
-        for(i=1;i<=8;i++)
-        {
-            if(i !== El_X)
-                {
-                 ArrayofmovementsEl.push(Search(i,El_Y))
-
-                } 
-        }
-
-        for(i=1;i<=8;i++)
-        {
-            if(i !== El_Y)
-                {
-                    ArrayofmovementsEl.push(Search(El_X,i))
-                } 
-        }
-
-        
-
-    })
-}
 
 El();
-
+Cm();
+Qn();
+Kn();
+Hr();
+Pw();
 
 
 document.querySelectorAll('.Active').forEach((value,index) => {
@@ -372,6 +173,10 @@ document.querySelectorAll('.Active').forEach((value,index) => {
 })
 
 
+/*
+document.querySelectorAll(".movable").forEach((value,index) => {
+    value.classList.remove("movable")
+})*/ 
 
 
 
