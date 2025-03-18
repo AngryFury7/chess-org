@@ -1,3 +1,6 @@
+// this file contains information about the different types of movement of the peices and the working of the Peices 
+
+
 export let Search = (a,b) => {
     let Arrayone = [];
     let P = [];
@@ -112,6 +115,15 @@ export const Cm = () => {
 
 
         value.addEventListener('click',()=> {
+
+            if( !value.classList.contains("Active"))
+            {
+               // console.log("yep this contains the Active class");;
+               //cleanUp();
+                return 
+            }
+            cleanUp();
+
             if(value.classList.contains("whiteP")){
                 breakerCm(ArrayofmovementsCm_TR,"blackP");
                 breakerCm(ArrayofmovementsCm_BR,"blackP")
@@ -237,6 +249,13 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
 
     value.addEventListener('click',()=> {
 
+        if( !value.classList.contains("Active"))
+            {
+               // console.log("yep this contains the Active class");
+              // cleanUp();
+                return 
+            }
+
         let breakerQn = (Arrayji,colorI) => {
             if(Arrayji.length !== 0){
                 let indexo = [0] ; 
@@ -256,6 +275,9 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
                 }
             }
         }
+        cleanUp();
+        console.log("queen")
+
 
         if(value.classList.contains("whiteP"))
         {
@@ -384,6 +406,16 @@ export const  Kn = () => {
     
     
         value.addEventListener('click',()=> {
+
+            if( !value.classList.contains("Active"))
+                {
+                   // console.log("yep this contains the Active class");
+                  // cleanUp();
+
+                    return 
+                }
+                cleanUp();
+
     
             let breakerKn = (Arrayji,colorI) => {
                 if(Arrayji.length !== 0){
@@ -486,6 +518,16 @@ export const  El = () => {
     
     
         value.addEventListener('click',()=> {
+            if( !value.classList.contains("Active"))
+                {
+                   // console.log("yep this contains the Active class");
+                  // cleanUp();
+
+                    return 
+                }
+
+                cleanUp();
+
     
             let breakerEl = (Arrayji,colorI) => {
                 if(Arrayji.length !== 0){
@@ -515,6 +557,10 @@ export const  El = () => {
                // breakerEl(ArrayofmovementsEl_TR,"blackP")
                 breakerEl(ArrayofmovementsEl_bottom,"blackP")
                 breakerEl(ArrayofmovementsEl_top,"blackP")
+                breakerEl(ArrayofmovementsEl_left,"blackP");
+                breakerEl(ArrayofmovementsEl_right,"blackP")
+
+
     
             }
     
@@ -526,6 +572,8 @@ export const  El = () => {
                   //  breakerEl(ArrayofmovementsEl_TR,"whiteP")
                 breakerEl(ArrayofmovementsEl_bottom,"whiteP")
                 breakerEl(ArrayofmovementsEl_top,"whiteP")
+                breakerEl(ArrayofmovementsEl_left,"whiteP");
+                breakerEl(ArrayofmovementsEl_right,"whiteP")
         
                 }
     
@@ -599,8 +647,19 @@ export const Hr = () => {
             if(value.x <=  8 && value.x >=  1 && value.y >=  1 && value.y <= 8)
             {return true}else{return false}
         })
+
+        //currentX , currentY ,classofPeice ,classcolorofPeice,typeofPeice , colorofEnemy , cleaningArray
         
         value.addEventListener('click',()=> {
+            if( !value.classList.contains("Active"))
+                {
+                   // console.log("yep this contains the Active class");
+                  // cleanUp();
+
+                    return 
+                }
+                cleanUp();
+
            if(value.classList.contains("whiteP"))
            {
             ArrayofmovementsHrFiltered.forEach((value,index) => {
@@ -613,6 +672,10 @@ export const Hr = () => {
                 }else{
                     Search(value.x,value.y).classList.add("movable")
                 }
+
+                //MovePeice(Hr_X,Hr_Y,"Hr","whiteP","white_horse","blackP",[ArrayofmovementsHr,ArrayofmovementsHr_bottom,ArrayofmovementsHr_left,ArrayofmovementsHr_right,ArrayofmovementsHr_top,ArrayofmovementsHrFiltered])
+               // console.log(ArrayofmovementsHrFiltered);
+               // console.log("wait")
             })
            }
 
@@ -628,6 +691,9 @@ export const Hr = () => {
                 }else{
                     Search(value.x,value.y).classList.add("movable")
                 }
+
+                MovePeice(Hr_X,Hr_Y,"Hr","blackP","black_horse","whiteP",[ArrayofmovementsHr,ArrayofmovementsHr_bottom,ArrayofmovementsHr_left,ArrayofmovementsHr_right,ArrayofmovementsHr_top,ArrayofmovementsHrFiltered])
+
             })
            }
         })
@@ -698,6 +764,15 @@ export const Pw = () => {
 
 
         value.addEventListener('click',()=> {
+            //console.log("pawn is trigger")
+
+            if( !value.classList.contains("Active"))
+                {
+                   // console.log("yep this contains the Active class");
+                    return 
+                }
+                cleanUp();
+
             if(value.classList.contains("whiteP"))
             {
                 ArrayofmovementsPw_bottom_whiteFiltered.forEach((value,index) => {
@@ -754,3 +829,209 @@ export const Pw = () => {
         })
     })
 }
+
+
+
+
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+//.       this is the space which i am leaving for the extra work which i will do 
+
+
+// so till now i have selected the values based on the classes of the elements and if they have class --> Active 
+
+
+
+
+export const cleanUp = () => {
+    document.querySelectorAll(".movable").forEach((value,index) => {
+        value.classList.remove("movable")
+    });
+
+
+    if(document.querySelectorAll(".enemyMove").length !== 0){
+    document.querySelectorAll(".enemyMove").forEach((value,index) => {
+        value.classList.remove("enemyMove")
+    });}
+}
+
+// let's make a function which can move an Peice from one place to other 
+
+export const Update = () => {
+    //console.log(document.querySelectorAll(".movable"))
+    // in this function i will try to update the position of the function ;
+    document.querySelectorAll(".Active").forEach((value,index) => {
+        value.addEventListener('click',() => {
+           let currentX =  Number(value.getAttribute("X"));
+           let currentY =  Number(value.getAttribute("Y"));
+           let NewX ;
+           let NewY ;
+           let typeofPeice ; 
+           let colorofPeice ;
+           let indexDecider ;
+           let classcolorofPeice;
+           let colorofenemy ;
+           let classcolorofenemy;
+           if(value.classList.contains("whiteP")){colorofPeice = "white"}
+           if(value.classList.contains("blackP")){colorofPeice = "black"}
+           if(value.classList.contains("whiteP")){classcolorofPeice = "whiteP"};
+           if(value.classList.contains("blackP")){classcolorofPeice = "blackP"};
+
+           if(value.classList.contains("whiteP")){colorofenemy = "black"}
+           if(value.classList.contains("blackP")){colorofenemy = "white"}
+           if(value.classList.contains("whiteP")){classcolorofenemy = "blackP"};
+           if(value.classList.contains("blackP")){classcolorofenemy = "whiteP"}
+
+
+           //first i will have to check the type of the Active clicked ;
+           let Classes = ["El" , "Hr" , "Cm" , "Pw" , "Kn" , "Qn"];
+            for(let i = 0 ; i<= 5 ; i++)
+            {
+                if(value.classList.contains(Classes[i]))
+                {
+                    typeofPeice = Classes[i];
+                    indexDecider = i; // 0 , 1, 2 , 3 , 4 , 5 
+                }
+            }
+
+            // remove these things from the item : .Active , .TypeofPeice , .colorofPeice , svg of it
+            // add these things to new Position : ".Active" , .typeofP ,color , svg of it 
+            // call the cleanup function on click of these items 
+           document.querySelectorAll(".movable").forEach((value,index) => {
+            value.addEventListener('click',() => {
+                cleanUp();
+                 NewX =  Number(value.getAttribute("X"));
+                 NewY =  Number(value.getAttribute("Y"));;
+                 cleanUp();
+                 Search(currentX,currentY).classList.remove("Active");
+                 Search(currentX,currentY).classList.remove(typeofPeice);
+                 Search(currentX,currentY).classList.remove(classcolorofPeice);
+                 Search(NewX,NewY).classList.add("Active");
+                 Search(NewX,NewY).classList.add(typeofPeice);
+                 Search(NewX,NewY).classList.add(classcolorofPeice);
+                 if(indexDecider === 3){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_pawn.svg`);
+
+                 }
+
+                 if(indexDecider === 0){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_elephant.svg`);
+
+                 }
+
+                 if(indexDecider === 1){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_horse.svg`);
+                    console.log("added the image");
+
+                 }
+
+                 if(indexDecider === 2){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_camel.svg`)
+
+                 }
+
+                 if(indexDecider === 4){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_king.svg`)
+
+                 }
+
+                 if(indexDecider === 5){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_queen.svg`)
+
+                 }
+
+                 Testing();
+                 
+            })
+           })
+
+           // in this i will have to remove the existing Peice on the ground ; // enemy 
+           // put new peice of that place //
+           // remove peice from existing place /// Attacker 
+            document.querySelectorAll(".enemyMove").forEach((value,index) => {
+            value.addEventListener('click',() => {
+
+                let typeofenemy ;
+                let Classes = ["El" , "Hr" , "Cm" , "Pw" , "Kn" , "Qn"];
+                for(let i = 0 ; i<= 5 ; i++)
+                {
+                    if(value.classList.contains(Classes[i]))
+                    {
+                        typeofenemy = Classes[i];
+                    }
+                }
+
+                
+                 NewX =  Number(value.getAttribute("X"));
+                 NewY =  Number(value.getAttribute("Y"));;
+                 Search(currentX,currentY).classList.remove("Active");
+                 Search(currentX,currentY).classList.remove(typeofPeice);
+                 Search(currentX,currentY).classList.remove(classcolorofPeice);
+
+                 Search(NewX,NewY).classList.remove(typeofenemy);
+                 Search(NewX,NewY).classList.remove(classcolorofenemy);
+
+                 Search(NewX,NewY).classList.add(typeofPeice);
+                 Search(NewX,NewY).classList.add(classcolorofPeice);
+
+                 Search(NewX,NewY).firstElementChild.setAttribute('src',"");
+
+                 if(indexDecider === 3){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_pawn.svg`)
+                 }
+
+                 if(indexDecider === 0){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_elephant.svg`)
+                 }
+
+                 if(indexDecider === 1){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_horse.svg`)
+                 }
+
+                 if(indexDecider === 2){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_camel.svg`)
+                 }
+
+                 if(indexDecider === 4){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_king.svg`)
+                 }
+
+                 if(indexDecider === 5){
+                    Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+                    Search(NewX,NewY).firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_queen.svg`)
+                 }
+
+                 Testing();
+
+            })
+           }) 
+        })
+    })
+}
+
+
+export const Testing = () => {
+Pw() ; Cm(); Kn(); Qn() ; El(); Hr(); Update();cleanUp();}
+
+
