@@ -1,4 +1,4 @@
-import {El , Search , Cm , Qn , Kn , Hr,Pw,cleanUp,Testing,ActiveblockMover} from './movement.js'
+import {El , Search , Cm , Qn , Kn , Hr,Pw,cleanUp,Testing,ActiveblockMover,AllowTurn} from './movement.js'
 console.log('index.js is loaded successfully');
 
 let Activeblock = (element,className) => {
@@ -35,7 +35,9 @@ blocks.forEach((value,index) => {
 
         if(A<=16 && A>=1){
              Activeblock(value,'Active');
-            Activeblock(value,'whiteP')
+            Activeblock(value,'whiteP');
+            Activeblock(value,'ActiveA');
+
         }
 
    
@@ -47,7 +49,9 @@ blocks.forEach((value,index) => {
 
         if(A<=64 && A>=49){
             Activeblock(value,'Active');
-            Activeblock(value,'blackP')
+            Activeblock(value,'blackP');
+            Activeblock(value,'ActiveA');
+
         }
 
         if(A===1){Activeblock(value,'El')};
@@ -123,10 +127,9 @@ let Y = [1,2,3,4,5,6,7,8];
 //now i will have to make functions for the El / Hr / Cm / Kn / Qn / Pw so the can search and i can add two conditions for them 
 
 
-
-
 Testing();
 ActiveblockMover();
+AllowTurn();
 
 
 

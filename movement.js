@@ -116,7 +116,7 @@ export const Cm = () => {
 
         value.addEventListener('click',()=> {
 
-            if( !value.classList.contains("Active"))
+            if( !value.classList.contains("ActiveA") || !value.classList.contains("Cm"))
             {
                // console.log("yep this contains the Active class");;
                //cleanUp();
@@ -138,6 +138,10 @@ export const Cm = () => {
                 breakerCm(ArrayofmovementsCm_TL,"whiteP")
                 breakerCm(ArrayofmovementsCm_BL,"whiteP");
                // console.log("clicked black")
+            }
+
+            if(Allow[2] === true){
+                cleanUp();
             }
         })
 
@@ -249,7 +253,7 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
 
     value.addEventListener('click',()=> {
 
-        if( !value.classList.contains("Active"))
+        if( !value.classList.contains("ActiveA") || !value.classList.contains("Qn"))
             {
                // console.log("yep this contains the Active class");
               // cleanUp();
@@ -276,7 +280,6 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
             }
         }
         cleanUp();
-        console.log("queen")
 
 
         if(value.classList.contains("whiteP"))
@@ -287,6 +290,9 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
             breakerQn(ArrayofmovementsQn_TR,"blackP")
             breakerQn(ArrayofmovementsQn_bottom,"blackP")
             breakerQn(ArrayofmovementsQn_top,"blackP")
+            breakerQn(ArrayofmovementsQn_right,"blackP")
+            breakerQn(ArrayofmovementsQn_left,"blackP")
+
 
         }
 
@@ -298,9 +304,14 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
                 breakerQn(ArrayofmovementsQn_TR,"whiteP")
                 breakerQn(ArrayofmovementsQn_bottom,"whiteP")
                 breakerQn(ArrayofmovementsQn_top,"whiteP")
-    
+                breakerQn(ArrayofmovementsQn_right,"whiteP")
+                breakerQn(ArrayofmovementsQn_left,"whiteP")
             }
 
+
+            if(Allow[4] === true){
+                cleanUp();
+            }
 
     })
 
@@ -407,7 +418,7 @@ export const  Kn = () => {
     
         value.addEventListener('click',()=> {
 
-            if( !value.classList.contains("Active"))
+            if( !value.classList.contains("ActiveA") || !value.classList.contains("Kn"))
                 {
                    // console.log("yep this contains the Active class");
                   // cleanUp();
@@ -460,6 +471,9 @@ export const  Kn = () => {
                 }
     
     
+                if(Allow[3] === true){
+                    cleanUp();
+                }
         })
     
     })
@@ -518,7 +532,7 @@ export const  El = () => {
     
     
         value.addEventListener('click',()=> {
-            if( !value.classList.contains("Active"))
+            if( !value.classList.contains("ActiveA") || !value.classList.contains("El"))
                 {
                    // console.log("yep this contains the Active class");
                   // cleanUp();
@@ -578,6 +592,9 @@ export const  El = () => {
                 }
     
     
+                if(Allow[0] === true){
+                    cleanUp();
+                }
         })
     
     })
@@ -651,7 +668,7 @@ export const Hr = () => {
         //currentX , currentY ,classofPeice ,classcolorofPeice,typeofPeice , colorofEnemy , cleaningArray
         
         value.addEventListener('click',()=> {
-            if( !value.classList.contains("Active"))
+            if( !value.classList.contains("ActiveA") || !value.classList.contains("Hr"))
                 {
                    // console.log("yep this contains the Active class");
                   // cleanUp();
@@ -695,6 +712,10 @@ export const Hr = () => {
 
             })
            }
+
+           if(Allow[1] === true){
+            cleanUp();
+        }
         })
 
     })
@@ -765,7 +786,7 @@ export const Pw = () => {
         value.addEventListener('click',()=> {
             //console.log("pawn is trigger")
 
-            if( !value.classList.contains("Active"))
+            if( !value.classList.contains("ActiveA") || !value.classList.contains("Pw"))
                 {
                    // console.log("yep this contains the Active class");
                     return 
@@ -825,6 +846,11 @@ export const Pw = () => {
     
                     })
                 }
+                if(Allow[5] === true)
+                {
+                    cleanUp();
+                }
+
         })
     })
 }
@@ -871,10 +897,48 @@ export const cleanUp = () => {
 export const Testing = () => {
 Pw() ; Cm(); Kn(); Qn() ; El(); Hr();;cleanUp();}
 
+
+let turns = ["white"];
+
+export const AllowTurn = () => {
+    document.querySelectorAll('.blocks').forEach((value,index) => {
+        if(turns[turns.length - 1] === "white")
+        {
+            if(value.classList.contains("blackP"))
+            {
+                value.classList.remove("ActiveA");
+            }
+
+            if(value.classList.contains("whiteP"))
+            {
+                value.classList.add("ActiveA");
+            }
+
+        }
+
+
+        if(turns[turns.length - 1] === "black")
+        {
+            if(value.classList.contains("whiteP"))
+            {
+                value.classList.remove("ActiveA");
+            }
+
+            if(value.classList.contains("blackP"))
+            {
+                value.classList.add("ActiveA");
+            }
+
+        }
+    })
+}
+
 let clickedNum = [];
 let clickedNumX = [];
 let clickedNumY = [];
 
+let doitornot = false;
+let Allow = [false,false,false,false,false,false]
 
 document.querySelectorAll('.blocks').forEach((value,index) => {
     value.addEventListener('click',()=> {
@@ -894,10 +958,14 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
         clickedNumX.push(Number(value.getAttribute("X")));
         clickedNumY.push(Number(value.getAttribute("Y")));
         if(value.classList.contains("movable")){ 
+            if(colorofPeice === "white"){turns.push("black")}
+            if(colorofPeice === "black"){turns.push("white")}
+            AllowTurn();
             if(currentX){ //starting bracket of if 
             Search(currentX,currentY).classList.remove(typeofPeice);
             Search(currentX,currentY).classList.remove(classcolorofPeice);
             Search(currentX,currentY).classList.remove("Active");
+            Search(currentX,currentY).classList.remove("ActiveA");
             Search(currentX,currentY).firstElementChild.setAttribute('src',"");
             value.classList.add(typeofPeice);
             value.classList.add(classcolorofPeice);
@@ -907,15 +975,20 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             ActiveblockMover();
             Testing();
 
+
             }//closingbracket of if
         }
 
 
         if(value.classList.contains("enemyMove")){ 
-            
             if(currentX){ //starting bracket of if 
                 
+                if(colorofPeice === "white"){turns.push("black")}
+                if(colorofPeice === "black"){turns.push("white")}
+                AllowTurn();
+
                  Search(currentX,currentY).classList.remove("Active");
+                 Search(currentX,currentY).classList.remove("ActiveA");
                  Search(currentX,currentY).classList.remove(typeofPeice);
                  Search(currentX,currentY).classList.remove(classcolorofPeice);
 
@@ -934,8 +1007,8 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
             MakeDefault();
             ActiveblockMover();
-                Testing();
             cleanUp();
+
             
 
             }//closingbracket of if
@@ -973,6 +1046,8 @@ export const MakeDefault = () =>
 export const ActiveblockMover = () => {
     document.querySelectorAll('.blocks').forEach((value,index) => {
             value.addEventListener('click',()=> {
+                Pw();Hr();Qn();El();Kn();Cm();
+                let mainindex = index;
                 if(value.classList.contains("Active")){
                 currentX = Number(value.getAttribute("X"));
                 currentY = Number(value.getAttribute("Y"));
@@ -988,13 +1063,27 @@ export const ActiveblockMover = () => {
                         indexdecider = i;
                     }
                 };
-                peicestring = peiceNames[indexdecider]
+                peicestring = peiceNames[indexdecider];
+
+                document.querySelectorAll('.blocks').forEach((value,index) => {
+                    if(index !== mainindex){
+                        value.classList.remove("Clicked");
+                        value.classList.add("notClicked")
+                    }else{
+                        value.classList.add("Clicked");
+                        value.classList.remove("notClicked")
+                    }
+                })
 
                 //console.log(document.querySelectorAll(".movable"));
         }})
         
     })
 };
+
+
+
+
 
 
 
