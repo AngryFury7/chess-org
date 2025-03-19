@@ -1,4 +1,4 @@
-import {El , Search , Cm , Qn , Kn , Hr,Pw,cleanUp,Testing,Update } from './movement.js'
+import {El , Search , Cm , Qn , Kn , Hr,Pw,cleanUp,Testing,ActiveblockMover} from './movement.js'
 console.log('index.js is loaded successfully');
 
 let Activeblock = (element,className) => {
@@ -126,7 +126,7 @@ let Y = [1,2,3,4,5,6,7,8];
 
 
 Testing();
-Update();
+ActiveblockMover();
 
 
 
@@ -154,7 +154,7 @@ document.querySelector('.testing').addEventListener('click',()=> {
     value.addEventListener('click',()=> {
         if(!value.classList.contains("Active"))
         {
-            if(!value.classList.contains("movable") && !value.classList.contains("enemyMove")){cleanUp() ; console.log("clicked non Active class")};
+            if(!value.classList.contains("movable") && !value.classList.contains("enemyMove")){cleanUp() ;};
            // if(!value.classList.contains("enemyMove")){cleanUp() ; console.log("clicked non Active class")}
         }
     })

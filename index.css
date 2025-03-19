@@ -65,3 +65,7 @@ img{
 .enemyMove {
     background-color: red !important;
 }
+
+.blocks{
+    user-select: none;
+}
