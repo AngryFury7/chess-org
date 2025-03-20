@@ -1,4 +1,3 @@
-// this file contains information about the different types of movement of the peices and the working of the Peices 
 
 
 export let Search = (a,b) => {
@@ -1063,7 +1062,6 @@ export const ActiveblockMover = () => {
 };
 
 
-//now i will have to store the positions 
 
 export const PositionObserver = 
 [
