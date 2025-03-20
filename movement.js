@@ -31,13 +31,10 @@ export let Search = (a,b) => {
 
  
 //----------------------------------------------------------------------------------------------------------------------------------
-
-export const Cm = () => {
+export const Cm = (Arrayone = ["white" , "black"],ArrayWhite = [3, 6],ArrayBlack = [51,54]) => {
     document.querySelectorAll(".Cm").forEach((value,index) => {
         let Cm_X = Number(value.getAttribute("X"));
         let Cm_Y = Number(value.getAttribute("Y"));
-        
-        
 
         let ArrayofmovementsCm_TR= []; //done 
         let TRX = Cm_X ; 
@@ -856,6 +853,10 @@ let clickedNum = [];
 let clickedNumX = [];
 let clickedNumY = [];
 
+let PeiceID;
+let EnemyID;
+let IDneeder = []
+
 document.querySelectorAll('.blocks').forEach((value,index) => {
     value.addEventListener('click',()=> {
         let typeofblock ;
@@ -874,6 +875,7 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
         clickedNumX.push(Number(value.getAttribute("X")));
         clickedNumY.push(Number(value.getAttribute("Y")));
         if(value.classList.contains("movable")){ 
+            let curentPosition = Number(value.getAttribute("positionN"))
             if(colorofPeice === "white"){turns.push("black")}
             if(colorofPeice === "black"){turns.push("white")}
             AllowTurn();
@@ -882,7 +884,21 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             Search(currentX,currentY).classList.remove(classcolorofPeice);
             Search(currentX,currentY).classList.remove("Active");
             Search(currentX,currentY).classList.remove("ActiveA");
+            Search(currentX,currentY).setAttribute("PeiceID","")
             Search(currentX,currentY).firstElementChild.setAttribute('src',"");
+            value.setAttribute("PeiceID",`${PeiceID}`)
+            let indexoP ;
+            for(let i = 0 ; i<= 31 ; i++)
+            {
+                if(PositionObserver[PositionObserver.length - 1][i].id  === PeiceID){console.log(PeiceID,"its found ") ; indexoP = i};
+                
+            }
+            let NewArray = PositionObserver[PositionObserver.length - 1].map((value,index) => {
+                if(index !== indexoP){return value}
+                if(index === indexoP){return {id : PeiceID , positionN : curentPosition}}
+            })
+            console.log(NewArray);
+            PositionObserver.push(NewArray);
             value.classList.add(typeofPeice);
             value.classList.add(classcolorofPeice);
             value.classList.add("Active");
@@ -890,8 +906,6 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             MakeDefault();
             ActiveblockMover();
             Testing();
-
-
             }//closingbracket of if
         }
 
@@ -902,6 +916,7 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
                     if(turns[turns.length - 1] === "white"){console.log("white is the winner") ; winner = "white"};
                     if(turns[turns.length - 1] === "black"){console.log("black is the winner") ; winner = "black"}
                 }
+                EnemyID = value.getAttribute("PeiceID")
                 
                 if(colorofPeice === "white"){turns.push("black")}
                 if(colorofPeice === "black"){turns.push("white")}
@@ -962,6 +977,8 @@ export const MakeDefault = () =>
          updatedSvgtype = undefined;  
          indexomania  = undefined;
          peicestring = undefined;
+         PeiceID = undefined;
+         EnemyID = undefined;
     }
 
 
@@ -971,6 +988,19 @@ export const ActiveblockMover = () => {
                 Pw();Hr();Qn();El();Kn();Cm();
                 let mainindex = index;
                 if(value.classList.contains("Active")){
+
+
+
+                    if(turns[turns.length - 1] === "white"){
+                        if(value.classList.contains("whiteP")){
+                        PeiceID = value.getAttribute("PeiceID");}
+                    }
+
+                    if(turns[turns.length - 1] === "black"){
+                       if( value.classList.contains("blackP")){
+                        PeiceID = value.getAttribute("PeiceID");}
+                    }
+
                 currentX = Number(value.getAttribute("X"));
                 currentY = Number(value.getAttribute("Y"));
                 if(value.classList.contains("whiteP")){colorofEnemy = "black" ; colorofPeice = "white" , classcolorofEnemy = "blackP" ; classcolorofPeice = "whiteP"};
@@ -1000,6 +1030,47 @@ export const ActiveblockMover = () => {
         
     })
 };
+
+
+//now i will have to store the positions 
+
+export const PositionObserver = 
+[
+    [
+        {id : "whiteElephant1",positionN : 1},
+        {id : "whiteElephant2",positionN : 8},
+        {id : "whiteHorse1",positionN : 2},
+        {id : "whiteHorse2",positionN : 7},
+        {id : "whiteCamel1",positionN : 3},
+        {id : "whiteCamel2",positionN : 6},
+        {id : "whiteKing",positionN :4},
+        {id : "whiteQueen",positionN : 5},
+        {id : "whitePawn1",positionN : 9},
+        {id : "whitePawn2",positionN : 10},
+        {id : "whitePawn3",positionN : 11},
+        {id : "whitePawn4",positionN : 12},
+        {id : "whitePawn5",positionN : 13},
+        {id : "whitePawn6",positionN : 14},
+        {id : "whitePawn7",positionN : 15},
+        {id : "whitePawn8",positionN : 16},
+        {id : "blackElephant1",positionN : 49},
+        {id : "blackElephant2",positionN : 56},
+        {id : "blackHorse1",positionN : 50},
+        {id : "blackHorse2",positionN : 55},
+        {id : "blackCamel1",positionN : 51},
+        {id : "blackCamel2",positionN : 54},
+        {id : "blackKing",positionN :52},
+        {id : "blackQueen",positionN : 53},
+        {id : "blackPawn1",positionN : 57},
+        {id : "blackPawn2",positionN : 58},
+        {id : "blackPawn3",positionN : 59},
+        {id : "blackPawn4",positionN : 60},
+        {id : "blackPawn5",positionN : 61},
+        {id : "blackPawn6",positionN : 62},
+        {id : "blackPawn7",positionN : 63},
+        {id : "blackPawn8",positionN : 64}
+    ]
+]
 
 
 
