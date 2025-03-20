@@ -1,13 +1,11 @@
-import {El , Search , Cm , Qn , Kn , Hr,Pw,cleanUp,Testing,ActiveblockMover,AllowTurn} from './movement.js'
+import {cleanUp,Testing,ActiveblockMover,AllowTurn,PositionObserver} from './movement.js'
 console.log('index.js is loaded successfully');
 
 let Activeblock = (element,className) => {
     element.classList.add(className)
-    //classname should be string and should be like '.Active.whiteP' or ".Active.blackP"
 }
 
 
-// i am setting this as default thing and will change and i can do this first block.forEach as function which will run initially 
 let blocks = document.querySelectorAll('.blocks');
 blocks.forEach((value,index) => {
     value.classList.add(`block${index+1}`);
@@ -69,20 +67,6 @@ blocks.forEach((value,index) => {
         if(A===59){Activeblock(value,'Cm')}
         if(A===62){Activeblock(value,'Cm')}
 
-        //if(A===1){Activeblock(value,'El1')};
-        //if(A===8){Activeblock(value,'El2')}
-        //if(A===57){Activeblock(value,'El1')}
-        //if(A===64){Activeblock(value,'El2')}
-//
-        //if(A===2){Activeblock(value,'Hr1')};
-        //if(A===7){Activeblock(value,'Hr2')}
-        //if(A===58){Activeblock(value,'Hr1')}
-        //if(A===63){Activeblock(value,'Hr2')}
-//
-        //if(A===3){Activeblock(value,'Cm1')};
-        //if(A===6){Activeblock(value,'Cm2')}
-        //if(A===59){Activeblock(value,'Cm1')}
-        //if(A===62){Activeblock(value,'Cm2')}
 
         if(A===4){Activeblock(value,'Kn')};
         if(A===60){Activeblock(value,'Kn')}
@@ -90,25 +74,9 @@ blocks.forEach((value,index) => {
         if(A===5){Activeblock(value,'Qn')}
 
         if(A>=9 && A<=16){Activeblock(value,'Pw')};
-        //if(A===9){Activeblock(value,`Pw${A-8}`)}
-        //if(A===10){Activeblock(value,`Pw${A-8}`)}
-        //if(A===11){Activeblock(value,`Pw${A-8}`)}
-        //if(A===12){Activeblock(value,`Pw${A-8}`)}
-        //if(A===13){Activeblock(value,`Pw${A-8}`)}
-        //if(A===14){Activeblock(value,`Pw${A-8}`)}
-        //if(A===15){Activeblock(value,`Pw${A-8}`)}
-        //if(A===16){Activeblock(value,`Pw${A-8}`)}
-//
-//
+
         if(A>=49 && A<=56){Activeblock(value,'Pw')};
-        //if(A===49){Activeblock(value,`Pw${A-48}`)}
-        //if(A===50){Activeblock(value,`Pw${A-48}`)}
-        //if(A===51){Activeblock(value,`Pw${A-48}`)}
-        //if(A===52){Activeblock(value,`Pw${A-48}`)}
-        //if(A===53){Activeblock(value,`Pw${A-48}`)}
-        //if(A===54){Activeblock(value,`Pw${A-48}`)}
-        //if(A===55){Activeblock(value,`Pw${A-48}`)}
-        //if(A===56){Activeblock(value,`Pw${A-48}`)}
+
 
 
 
@@ -124,7 +92,6 @@ let Y = [1,2,3,4,5,6,7,8];
 
 
 
-//now i will have to make functions for the El / Hr / Cm / Kn / Qn / Pw so the can search and i can add two conditions for them 
 
 
 Testing();
@@ -148,9 +115,13 @@ AllowTurn();
                 value.classList.remove("Clicked");
                 value.classList.add("notClicked");
             })};
-           // if(!value.classList.contains("enemyMove")){cleanUp() ; console.log("clicked non Active class")}
         }
     })
+ })
+
+
+ document.querySelector(".Print").addEventListener('click',()=> {
+    console.log(PositionObserver)
  })
 
 

@@ -890,14 +890,14 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             let indexoP ;
             for(let i = 0 ; i<= 31 ; i++)
             {
-                if(PositionObserver[PositionObserver.length - 1][i].id  === PeiceID){console.log(PeiceID,"its found ") ; indexoP = i};
+                if(PositionObserver[PositionObserver.length - 1][i].id  === PeiceID){ indexoP = i};
                 
             }
             let NewArray = PositionObserver[PositionObserver.length - 1].map((value,index) => {
                 if(index !== indexoP){return value}
                 if(index === indexoP){return {id : PeiceID , positionN : curentPosition}}
             })
-            console.log(NewArray);
+            //console.log(NewArray);
             PositionObserver.push(NewArray);
             value.classList.add(typeofPeice);
             value.classList.add(classcolorofPeice);
@@ -912,6 +912,33 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
         if(value.classList.contains("enemyMove")){ 
             if(currentX){ //starting bracket of if 
+                let opponentID = value.getAttribute("PeiceID");
+                let currentEnemyP = Number(value.getAttribute("positionN"))
+                let opponentindex;
+                for(let i = 0 ; i <=31 ; i++)
+                {
+                    if(PositionObserver[PositionObserver.length - 1][i].id === opponentID){
+                        opponentindex  = i;
+                     }
+                }
+
+                let PeiceIndex ;
+                for(let i = 0 ; i <=31 ; i++)
+                {
+                    if(PositionObserver[PositionObserver.length - 1][i].id === PeiceID){
+                        PeiceIndex  = i;
+                     }  
+                }
+
+                let NewArray = PositionObserver[PositionObserver.length - 1].map((value,index) => {
+                    if(index !== opponentindex  && index !== PeiceIndex){return value}
+                    if(index === opponentindex){return {id : opponentID ,  state : "deleted" , defeatby : PeiceID }};
+                    if(index === PeiceIndex){return { id : PeiceID , positionN : currentEnemyP}}
+                    //also mention the id change of the peice which cutted the black or white part 
+                })
+
+                PositionObserver.push(NewArray);
+
                 if(value.classList.contains("Kn")){
                     if(turns[turns.length - 1] === "white"){console.log("white is the winner") ; winner = "white"};
                     if(turns[turns.length - 1] === "black"){console.log("black is the winner") ; winner = "black"}
@@ -922,6 +949,7 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
                 if(colorofPeice === "black"){turns.push("white")}
 
                  Search(currentX,currentY).classList.remove("Active");
+                 Search(currentX,currentY).setAttribute("PeiceID" , "");
                  Search(currentX,currentY).classList.remove("ActiveA");
                  Search(currentX,currentY).classList.remove(typeofPeice);
                  Search(currentX,currentY).classList.remove(classcolorofPeice);
@@ -929,6 +957,7 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
                  value.classList.add(typeofPeice);
                  value.classList.add(classcolorofPeice);
+                 value.setAttribute("PeiceID",`${PeiceID}`)
 
                  value.classList.remove(typeofblock);
                  value.classList.remove(classcolorofEnemy);
@@ -946,6 +975,8 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             cleanUp();
             AllowTurn();
 
+            opponentID = undefined;
+            PeiceIndex = undefined;
             
 
             }//closingbracket of if
