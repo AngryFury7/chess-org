@@ -813,6 +813,7 @@ Pw() ; Cm(); Kn(); Qn() ; El(); Hr();;cleanUp();}
 
 
 let turns = ["white"];
+let winner ;
 
 export const AllowTurn = () => {
     document.querySelectorAll('.blocks').forEach((value,index) => {
@@ -897,6 +898,10 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
         if(value.classList.contains("enemyMove")){ 
             if(currentX){ //starting bracket of if 
+                if(value.classList.contains("Kn")){
+                    if(turns[turns.length - 1] === "white"){console.log("white is the winner") ; winner = "white"};
+                    if(turns[turns.length - 1] === "black"){console.log("black is the winner") ; winner = "black"}
+                }
                 
                 if(colorofPeice === "white"){turns.push("black")}
                 if(colorofPeice === "black"){turns.push("white")}
