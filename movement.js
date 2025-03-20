@@ -27,7 +27,6 @@ export let Search = (a,b) => {
 } 
 
 
-///////////////////////////////////////////////////////////////////////////////////
 
 
  
@@ -37,21 +36,15 @@ export const Cm = () => {
     document.querySelectorAll(".Cm").forEach((value,index) => {
         let Cm_X = Number(value.getAttribute("X"));
         let Cm_Y = Number(value.getAttribute("Y"));
-        let disCX = Cm_X - 1;;
-        let disCY = Cm_Y - 1;
-        let disEX = 8 - Cm_X;
-        let disEY = 8 - Cm_Y;
         
         
-        //first --> TR BR BL TL diagonals in the 
 
         let ArrayofmovementsCm_TR= []; //done 
         let TRX = Cm_X ; 
         let TRY = Cm_Y ;
         for(let i = 1 ; i <= 7 ; i++)
         {
-            TRX = TRX + 1 ;
-            TRY = TRY + 1 ;
+            TRX = TRX + 1 ;     TRY = TRY + 1 ;
             if(TRX > 8 || TRY > 8){break}else{
             ArrayofmovementsCm_TR.push({x : TRX , y : TRY})}
         }
@@ -80,7 +73,7 @@ export const Cm = () => {
             ArrayofmovementsCm_TL.push({x : TLX , y : TLY})}
         }
 
-        let ArrayofmovementsCm_BL= [];  //done 
+        let ArrayofmovementsCm_BL= [];   
         let BLX = Cm_X ; 
         let BLY = Cm_Y ;
         for(let i = 1 ; i <= 7 ; i++)
@@ -95,7 +88,6 @@ export const Cm = () => {
 
         let breakerCm = (Arrayji,colorI) => {
             if(Arrayji.length !== 0){
-                let indexo = [0] ; 
                 for(let i = 0 ; i <= Arrayji.length -1 ; i++)
                 {
                     if(Search(Arrayji[i].x,Arrayji[i].y).classList.contains("Active"))
@@ -118,8 +110,6 @@ export const Cm = () => {
 
             if( !value.classList.contains("ActiveA") || !value.classList.contains("Cm"))
             {
-               // console.log("yep this contains the Active class");;
-               //cleanUp();
                 return 
             }
             cleanUp();
@@ -129,7 +119,6 @@ export const Cm = () => {
                 breakerCm(ArrayofmovementsCm_BR,"blackP")
                 breakerCm(ArrayofmovementsCm_TL,"blackP")
                 breakerCm(ArrayofmovementsCm_BL,"blackP");
-               // console.log("clicked white")
             }
 
             if(value.classList.contains("blackP")){
@@ -137,12 +126,9 @@ export const Cm = () => {
                 breakerCm(ArrayofmovementsCm_BR,"whiteP")
                 breakerCm(ArrayofmovementsCm_TL,"whiteP")
                 breakerCm(ArrayofmovementsCm_BL,"whiteP");
-               // console.log("clicked black")
             }
 
-            if(Allow[2] === true){
-                cleanUp();
-            }
+
         })
 
 
@@ -255,8 +241,6 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
 
         if( !value.classList.contains("ActiveA") || !value.classList.contains("Qn"))
             {
-               // console.log("yep this contains the Active class");
-              // cleanUp();
                 return 
             }
 
@@ -307,12 +291,6 @@ document.querySelectorAll('.Qn').forEach((value,index)=> {
                 breakerQn(ArrayofmovementsQn_right,"whiteP")
                 breakerQn(ArrayofmovementsQn_left,"whiteP")
             }
-
-
-            if(Allow[4] === true){
-                cleanUp();
-            }
-
     })
 
 })
@@ -420,9 +398,6 @@ export const  Kn = () => {
 
             if( !value.classList.contains("ActiveA") || !value.classList.contains("Kn"))
                 {
-                   // console.log("yep this contains the Active class");
-                  // cleanUp();
-
                     return 
                 }
                 cleanUp();
@@ -468,11 +443,6 @@ export const  Kn = () => {
                     breakerKn(ArrayofmovementsKn_bottom,"whiteP")
                     breakerKn(ArrayofmovementsKn_top,"whiteP")
         
-                }
-    
-    
-                if(Allow[3] === true){
-                    cleanUp();
                 }
         })
     
@@ -534,9 +504,6 @@ export const  El = () => {
         value.addEventListener('click',()=> {
             if( !value.classList.contains("ActiveA") || !value.classList.contains("El"))
                 {
-                   // console.log("yep this contains the Active class");
-                  // cleanUp();
-
                     return 
                 }
 
@@ -565,35 +532,19 @@ export const  El = () => {
     
             if(value.classList.contains("whiteP"))
             {
-               // breakerEl(ArrayofmovementsEl_BL,"blackP")
-               // breakerEl(ArrayofmovementsEl_BR,"blackP")
-               // breakerEl(ArrayofmovementsEl_TL,"blackP")
-               // breakerEl(ArrayofmovementsEl_TR,"blackP")
                 breakerEl(ArrayofmovementsEl_bottom,"blackP")
                 breakerEl(ArrayofmovementsEl_top,"blackP")
                 breakerEl(ArrayofmovementsEl_left,"blackP");
                 breakerEl(ArrayofmovementsEl_right,"blackP")
-
-
-    
             }
     
             if(value.classList.contains("blackP"))
                 {
-                  //  breakerEl(ArrayofmovementsEl_BL,"whiteP")
-                  //  breakerEl(ArrayofmovementsEl_BR,"whiteP")
-                  //  breakerEl(ArrayofmovementsEl_TL,"whiteP")
-                  //  breakerEl(ArrayofmovementsEl_TR,"whiteP")
                 breakerEl(ArrayofmovementsEl_bottom,"whiteP")
                 breakerEl(ArrayofmovementsEl_top,"whiteP")
                 breakerEl(ArrayofmovementsEl_left,"whiteP");
                 breakerEl(ArrayofmovementsEl_right,"whiteP")
         
-                }
-    
-    
-                if(Allow[0] === true){
-                    cleanUp();
                 }
         })
     
@@ -616,7 +567,6 @@ export const Hr = () => {
             T = T + 2;
             Tl = Tl - 1;
             Tr = Tr + 1 ;
-         //   if(T > 8 || Tl < 1 || Tr > 8){break}else{ArrayofmovementsHr_top.push({x : Tl , y : T}, {x : Tr , y : T})}
          ArrayofmovementsHr_top.push({x : Tl , y : T}, {x : Tr , y : T})
         }
 
@@ -629,7 +579,6 @@ export const Hr = () => {
             L = L - 2;
             Lt = Lt + 1;
             Lb = Lb - 1 ;
-          //  if(L < 1 || Lb < 1 || Lt > 8){break}else{ArrayofmovementsHr_left.push({x : L, y : Lb}, {x : L , y : Lt})}
           ArrayofmovementsHr_left.push({x : L, y : Lb}, {x : L , y : Lt})
         }
 
@@ -642,7 +591,6 @@ export const Hr = () => {
             R = R + 2;
             Rt = Rt + 1;
             Rb = Rb - 1 ;
-          //  if(R > 8 || Rb < 1 || Rt > 8){break}else{ArrayofmovementsHr_right.push({x : R, y : Rb}, {x : R , y : Rt})}
           ArrayofmovementsHr_right.push({x : R, y : Rb}, {x : R , y : Rt})
         }
 
@@ -655,7 +603,6 @@ export const Hr = () => {
             B = B - 2;
             Bl = Bl - 1;
             Br = Br + 1 ;
-           // if(B < 1 || Bl < 1 || Br > 8){break}else{ArrayofmovementsHr_bottom.push({x : Bl , y : B}, {x : Br , y : B})}
            ArrayofmovementsHr_bottom.push({x : Bl , y : B}, {x : Br , y : B})
         }
 
@@ -665,14 +612,10 @@ export const Hr = () => {
             {return true}else{return false}
         })
 
-        //currentX , currentY ,classofPeice ,classcolorofPeice,typeofPeice , colorofEnemy , cleaningArray
         
         value.addEventListener('click',()=> {
             if( !value.classList.contains("ActiveA") || !value.classList.contains("Hr"))
                 {
-                   // console.log("yep this contains the Active class");
-                  // cleanUp();
-
                     return 
                 }
                 cleanUp();
@@ -690,9 +633,6 @@ export const Hr = () => {
                     Search(value.x,value.y).classList.add("movable")
                 }
 
-                //MovePeice(Hr_X,Hr_Y,"Hr","whiteP","white_horse","blackP",[ArrayofmovementsHr,ArrayofmovementsHr_bottom,ArrayofmovementsHr_left,ArrayofmovementsHr_right,ArrayofmovementsHr_top,ArrayofmovementsHrFiltered])
-               // console.log(ArrayofmovementsHrFiltered);
-               // console.log("wait")
             })
            }
 
@@ -713,9 +653,7 @@ export const Hr = () => {
             })
            }
 
-           if(Allow[1] === true){
-            cleanUp();
-        }
+
         })
 
     })
@@ -738,7 +676,6 @@ export const Pw = () => {
                 B = B - 1;
                 Bl = Bl - 1;
                 Br = Br + 1 ;
-               // if(B < 1 || Bl < 1 || Br > 8){break}else{ArrayofmovementsHr_bottom.push({x : Bl , y : B}, {x : Br , y : B})}
                ArrayofmovementsPw_bottom_white.push({x : Bl , y : B,id:"pass"}, {x : Br , y : B , id : "pass"},{x : Pw_X, y : B, id : "pass"})
             }
 
@@ -759,7 +696,6 @@ export const Pw = () => {
                 T = T + 1;
                 Tl = Tl - 1;
                 Tr = Tr + 1 ;
-             //   if(T > 8 || Tl < 1 || Tr > 8){break}else{ArrayofmovementsHr_top.push({x : Tl , y : T}, {x : Tr , y : T})}
              ArrayofmovementsPw_top_black.push({x : Tl , y : T,id : "pass"}, {x : Tr , y : T,id : "pass"},{x : Pw_X , y : T,id : "pass"})
             }
             if(Pw_Y === 2){
@@ -784,11 +720,9 @@ export const Pw = () => {
 
 
         value.addEventListener('click',()=> {
-            //console.log("pawn is trigger")
 
             if( !value.classList.contains("ActiveA") || !value.classList.contains("Pw"))
                 {
-                   // console.log("yep this contains the Active class");
                     return 
                 }
                 cleanUp();
@@ -846,10 +780,7 @@ export const Pw = () => {
     
                     })
                 }
-                if(Allow[5] === true)
-                {
-                    cleanUp();
-                }
+ 
 
         })
     })
@@ -858,22 +789,6 @@ export const Pw = () => {
 
 
 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-//.       this is the space which i am leaving for the extra work which i will do 
-
-
-// so till now i have selected the values based on the classes of the elements and if they have class --> Active 
 
 
 
@@ -889,7 +804,6 @@ export const cleanUp = () => {
     });
 }
 
-// let's make a function which can move an Peice from one place to other 
 
 
 
@@ -922,11 +836,15 @@ export const AllowTurn = () => {
             if(value.classList.contains("whiteP"))
             {
                 value.classList.remove("ActiveA");
+                value.classList.remove("Clicked");
+                value.classList.add("notClicked")
             }
 
             if(value.classList.contains("blackP"))
             {
                 value.classList.add("ActiveA");
+                value.classList.remove("Clicked");
+                value.classList.add("notClicked")
             }
 
         }
@@ -936,9 +854,6 @@ export const AllowTurn = () => {
 let clickedNum = [];
 let clickedNumX = [];
 let clickedNumY = [];
-
-let doitornot = false;
-let Allow = [false,false,false,false,false,false]
 
 document.querySelectorAll('.blocks').forEach((value,index) => {
     value.addEventListener('click',()=> {
@@ -985,7 +900,6 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
                 
                 if(colorofPeice === "white"){turns.push("black")}
                 if(colorofPeice === "black"){turns.push("white")}
-                AllowTurn();
 
                  Search(currentX,currentY).classList.remove("Active");
                  Search(currentX,currentY).classList.remove("ActiveA");
@@ -998,6 +912,8 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
                  value.classList.remove(typeofblock);
                  value.classList.remove(classcolorofEnemy);
+                 value.classList.remove("Clicked");
+                 value.classList.add("notClicked")
 
 
                  Search(currentX,currentY).firstElementChild.setAttribute('src',"");
@@ -1008,6 +924,7 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             MakeDefault();
             ActiveblockMover();
             cleanUp();
+            AllowTurn();
 
             
 
@@ -1019,13 +936,13 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
 let currentX = undefined;
 let currentY = undefined;
-let typeofPeice = undefined;  //its a string and we will see how it will work eg "Hr"
+let typeofPeice = undefined;  
 let peicestring = undefined;
-let colorofPeice = undefined;  // its also a string and we will also see how it will work  Eg ------------> "white"
+let colorofPeice = undefined;  
 let colorofEnemy = undefined;
-let classcolorofEnemy = undefined; // Eg = "blackP"        --------> Enemy
-let classcolorofPeice = undefined; // its also a string and we will see how it will work 
-let updatedSvgtype = undefined;  // its also going to be a string and we will see how it will work 
+let classcolorofEnemy = undefined;
+let classcolorofPeice = undefined; 
+let updatedSvgtype = undefined; 
 let indexomania  = undefined;
 
 export const MakeDefault = () => 
@@ -1064,7 +981,6 @@ export const ActiveblockMover = () => {
                     }
                 };
                 peicestring = peiceNames[indexdecider];
-
                 document.querySelectorAll('.blocks').forEach((value,index) => {
                     if(index !== mainindex){
                         value.classList.remove("Clicked");
@@ -1075,7 +991,6 @@ export const ActiveblockMover = () => {
                     }
                 })
 
-                //console.log(document.querySelectorAll(".movable"));
         }})
         
     })

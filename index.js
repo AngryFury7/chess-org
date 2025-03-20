@@ -136,28 +136,18 @@ AllowTurn();
 
 
 
-/*
-document.querySelectorAll(".movable").forEach((value,index) => {
-    value.classList.remove("movable")
-})*/ 
 
-document.querySelector('.testing').addEventListener('click',()=> {
 
-   document.querySelectorAll(".movable").forEach((value,index) => {
-    console.log(value.getAttribute("X"),value.getAttribute("Y") , "this is movable items");
-   })
-
-   document.querySelectorAll(".enemyMove").forEach((value,index) => {
-    console.log(value.getAttribute("X"),value.getAttribute("Y") , "this is enemyItems");
-   })
-})
 
 
  document.querySelectorAll('.blocks').forEach((value,index) => {
     value.addEventListener('click',()=> {
         if(!value.classList.contains("Active"))
         {
-            if(!value.classList.contains("movable") && !value.classList.contains("enemyMove")){cleanUp() ;};
+            if(!value.classList.contains("movable") && !value.classList.contains("enemyMove")){cleanUp(); document.querySelectorAll(".Clicked").forEach((value,index) => {
+                value.classList.remove("Clicked");
+                value.classList.add("notClicked");
+            })};
            // if(!value.classList.contains("enemyMove")){cleanUp() ; console.log("clicked non Active class")}
         }
     })
