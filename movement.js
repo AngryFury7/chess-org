@@ -1187,7 +1187,6 @@ document.querySelector(".Restart").addEventListener('click',()=> {
            value.classList.add('Active');
            value.classList.add('whiteP');
            value.classList.add('ActiveA');
-
        }
 
        if(A<=64 && A>=49)
@@ -1241,7 +1240,7 @@ document.querySelector(".Restart").addEventListener('click',()=> {
         if(value.classList.contains("Kn")){value.firstElementChild.setAttribute("src",`./svgs/${color}_king.svg`)}
         if(value.classList.contains("Qn")){value.firstElementChild.setAttribute("src",`./svgs/${color}_queen.svg`)}
         if(value.classList.contains("Pw")){value.firstElementChild.setAttribute("src",`./svgs/${color}_pawn.svg`)}
-
+        
 
         Testing();
         ActiveblockMover();
