@@ -24,6 +24,7 @@ body{
     height : calc(90px + (clamp(201px , 72vh , 81vh))); aspect-ratio: 1;
     background-color : rgb(139,69,19);
     border-radius: 10px;
+    position: relative;
 }
 
 .blocks {
@@ -109,4 +110,23 @@ img{
 
 .xyz{
     background-color: blue;
+}
+
+
+
+.Result {
+    transform: scale(0);
+    position: absolute;
+    height : clamp(291px , 72vh , 81vh); aspect-ratio: 1;
+    background-color: rgb(125,95,60) !important;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    filter:blur(0px)
+}
+
+.blurit
+{
+    filter : blur(2px)
 }

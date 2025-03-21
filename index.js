@@ -1,9 +1,7 @@
 import {cleanUp,Testing,ActiveblockMover,AllowTurn,PositionObserver} from './movement.js'
 console.log('index.js is loaded successfully');
 
-let Activeblock = (element,className) => {
-    element.classList.add(className)
-}
+let Activeblock = (element,className) => {element.classList.add(className)}
 
 
 let blocks = document.querySelectorAll('.blocks');
