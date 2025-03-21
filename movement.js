@@ -716,7 +716,6 @@ export const Pw = () => {
 
 
         value.addEventListener('click',()=> {
-
             if( !value.classList.contains("ActiveA") || !value.classList.contains("Pw"))
                 {
                     return 
@@ -756,8 +755,9 @@ export const Pw = () => {
                         if(value.x !== Pw_X)
                         {
                             if(Search(value.x,value.y).classList.contains("whiteP")){
-                                Search(value.x,value.y).classList.add("enemyMove")
+                                Search(value.x,value.y).classList.add("enemyMove");
                             }
+                            
                         }else{
                             if(value.id === "notpass")
                             {
@@ -954,11 +954,14 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
                  Search(currentX,currentY).classList.remove(classcolorofPeice);
 
 
-                 value.classList.add(typeofPeice);
                  value.classList.add(classcolorofPeice);
                  value.setAttribute("PeiceID",`${PeiceID}`)
 
-                 value.classList.remove(typeofblock);
+                if(typeofPeice !== typeofblock)
+                {
+                    value.classList.remove(typeofblock);
+                    value.classList.add(typeofPeice);
+                }
                  value.classList.remove(classcolorofEnemy);
                  value.classList.remove("Clicked");
                  value.classList.add("notClicked")
@@ -968,11 +971,10 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
 
 
                 value.firstElementChild.setAttribute('src',`./svgs/${colorofPeice}_${peicestring}.svg`);
-
+                AllowTurn();
             MakeDefault();
             ActiveblockMover();
             cleanUp();
-            AllowTurn();
 
             opponentID = undefined;
             PeiceIndex = undefined;
