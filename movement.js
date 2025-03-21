@@ -1111,7 +1111,7 @@ document.querySelectorAll(".blocks").forEach((value,index) => {
                 i++
             )
             {
-                document.querySelector(".ResultImg").setAttribute("src","./svgs/white_King.svg");
+                document.querySelector(".ResultImg").setAttribute("src","./svgs/white_king.svg");
                 document.querySelector(".ResultText").innerHTML = "White is the Winner !";
                 gsap.set(document.querySelector(".ResultText"),{
                     color : "rgb(255,255,255)"
@@ -1129,7 +1129,7 @@ document.querySelectorAll(".blocks").forEach((value,index) => {
                 i++
             )
             {
-                document.querySelector(".ResultImg").setAttribute("src","./svgs/black_King.svg");
+                document.querySelector(".ResultImg").setAttribute("src","./svgs/black_king.svg");
                 document.querySelector(".ResultText").innerHTML = "Black is the Winner !";
                 gsap.set(document.querySelector(".ResultText"),{
                     color : "rgb(0,0,0)"
@@ -1235,12 +1235,12 @@ document.querySelector(".Restart").addEventListener('click',()=> {
         if(value.classList.contains("blackP")){color = "black"};
 
         if(value.classList.contains("El")){value.firstElementChild.setAttribute("src",`./svgs/${color}_elephant.svg`)};
-        if(value.classList.contains("Hr")){value.firstElementChild.setAttribute("src",`./svgs/${color}_Horse.svg`)}
+        if(value.classList.contains("Hr")){value.firstElementChild.setAttribute("src",`./svgs/${color}_horse.svg`)}
         if(value.classList.contains("Cm")){value.firstElementChild.setAttribute("src",`./svgs/${color}_camel.svg`)}
         if(value.classList.contains("Kn")){value.firstElementChild.setAttribute("src",`./svgs/${color}_king.svg`)}
         if(value.classList.contains("Qn")){value.firstElementChild.setAttribute("src",`./svgs/${color}_queen.svg`)}
         if(value.classList.contains("Pw")){value.firstElementChild.setAttribute("src",`./svgs/${color}_pawn.svg`)}
-        
+
 
         Testing();
         ActiveblockMover();
