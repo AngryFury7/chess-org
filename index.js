@@ -122,6 +122,8 @@ AllowTurn();
     console.log(PositionObserver)
  })
 
+ // will add the autoRun bot
+
 
 
 

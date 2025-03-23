@@ -1254,7 +1254,13 @@ document.querySelector(".Restart").addEventListener('click',()=> {
         })
 
     })
-})
+});
+
+let A = () => {
+    console.log("hey you called the function A ")
+}
+
+//so i think this is the most which i could have done it 
 
 
 
