@@ -9,6 +9,7 @@ body{
     margin-inline: 60px;
     display :flex;align-items :center; justify-content:  flex-start;;;
     overflow: hidden;
+        gap : 100px
 }
 
 
@@ -19,7 +20,7 @@ body{
 }
 
 
-.outer-container {
+.outer-container,.EXII {
     display :flex;align-items: center;justify-content: center;flex-wrap: wrap;
     height : calc(90px + (clamp(201px , 72vh , 81vh))); aspect-ratio: 1;
     background-color : rgb(139,69,19);
@@ -91,7 +92,7 @@ img{
 }
 
 
-.blocks.Active:not(.enemyMove):not(.ActiveA){
+:not(.noEvents).blocks.Active:not(.enemyMove):not(.ActiveA){
     cursor: not-allowed !important;
     filter:  brightness(90%) !important;
 }
@@ -130,4 +131,62 @@ img{
     filter : blur(2px)
 }
 
+
+.EXII 
+{
+    background-color: transparent !important;
+    border : 1px solid white;
+}
+
+.dfs
+{
+    height: clamp(72.750px , 18vh , 20.250vh);
+    width : clamp(291px , 73vh , 81vh);
+    display: flex;align-items: center;justify-content: center;flex-wrap: wrap;
+    border : 1px dotted rgba(255,255,255,0.5);
+    border-radius : 9px;
+}
+
+
+.whitedfs , .blackdfs
+
+{
+    height: clamp(36.375px , 9vh , 10.125vh);
+    aspect-ratio: 1 ;
+    cursor:not-allowed;
+}
+
+.white_Pw_choices , .black_Pw_choices
+{
+    height: clamp(36.375px , 9vh , 10.125vh);
+    aspect-ratio: 1;
+    display: flex;align-items: center;justify-content: center;
+}
+
+.pwchange
+{
+    display: flex;;align-items: center;justify-content: center;flex-direction: row;
+    border : 1px solid aqua;
+    border-radius: 0px;
+}
+
+
+.white_Pw_choices:hover , .black_Pw_choices:hover 
+{
+    background-color: aqua;
+    cursor: pointer;
+}
+
+.pwchange{
+    opacity: 0;
+}
+
+.dfss
+{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.noEvents{pointer-events: none;filter :brightness(40%)}
 

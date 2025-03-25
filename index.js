@@ -118,11 +118,13 @@ AllowTurn();
  })
 
 
- document.querySelector(".Print").addEventListener('click',()=> {
-    console.log(PositionObserver)
- })
 
  // will add the autoRun bot
+
+  document.querySelectorAll(".dfss").forEach((value,index) => {
+    value.firstElementChild.setAttribute("src" , "")
+ }) 
+
 
 
 

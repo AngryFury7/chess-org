@@ -427,6 +427,9 @@ export const  Kn = () => {
                 breakerKn(ArrayofmovementsKn_TR,"blackP")
                 breakerKn(ArrayofmovementsKn_bottom,"blackP")
                 breakerKn(ArrayofmovementsKn_top,"blackP")
+                breakerKn(ArrayofmovementsKn_left,"blackP")
+                breakerKn(ArrayofmovementsKn_right,"blackP")
+
     
             }
     
@@ -438,6 +441,9 @@ export const  Kn = () => {
                     breakerKn(ArrayofmovementsKn_TR,"whiteP")
                     breakerKn(ArrayofmovementsKn_bottom,"whiteP")
                     breakerKn(ArrayofmovementsKn_top,"whiteP")
+                    breakerKn(ArrayofmovementsKn_left,"whiteP")
+                    breakerKn(ArrayofmovementsKn_right,"whiteP")
+
         
                 }
         })
@@ -856,6 +862,16 @@ let PeiceID;
 let EnemyID;
 let IDneeder = [];
 
+let NewTypeofTransform_white ; 
+let NewTypeofTransform_black ;
+
+let ChangablePawns = [];
+for(let i = 0 ; i <= 15 ; i++)
+{
+    if(i<= 7)ChangablePawns.push(`whitePawn${i+1}`)
+    if(i > 7)ChangablePawns.push(`whitePawn${i - 7}`)
+}
+
 document.querySelectorAll('.blocks').forEach((value,index) => {
     value.addEventListener('click',()=> {
         let typeofblock ;
@@ -907,18 +923,34 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
             }//closingbracket of if
         }
 
+        // we have type of Peice and the color of the Peice and now we can check what we can do to change it 
 
         if(value.classList.contains("enemyMove")){ 
             if(currentX){ //starting bracket of if 
                 let opponentID = value.getAttribute("PeiceID");
                 let currentEnemyP = Number(value.getAttribute("positionN"))
                 let opponentindex;
+                let initialSRC = value.firstElementChild.getAttribute("src");
+                console.log(opponentID)
+                document.querySelectorAll('.dfss').forEach((value,index) => {
+                    if(value.getAttribute("PeiceIDDFS") === opponentID)
+                    {
+                        value.firstElementChild.setAttribute("src" , initialSRC)
+                    }
+                })
                 for(let i = 0 ; i <=31 ; i++)
                 {
                     if(PositionObserver[PositionObserver.length - 1][i].id === opponentID){
                         opponentindex  = i;
                      }
                 }
+
+
+                let UpdatedChangablePawns = ChangablePawns.filter((value,index) => {
+                    if(value === opponentID){return false}else{return true}
+                })
+
+                ChangablePawns = UpdatedChangablePawns;
 
                 let PeiceIndex ;
                 for(let i = 0 ; i <=31 ; i++)
@@ -941,7 +973,29 @@ document.querySelectorAll('.blocks').forEach((value,index) => {
                     if(turns[turns.length - 1] === "white"){console.log("white is the winner") ; winner = "white"};
                     if(turns[turns.length - 1] === "black"){console.log("black is the winner") ; winner = "black"}
                 }
-                EnemyID = value.getAttribute("PeiceID")
+                EnemyID = value.getAttribute("PeiceID");
+
+                if(typeofPeice === "Pw")
+                {
+                    if(colorofPeice === "white")
+                        if(Number(value.getAttribute("Y")) === 1)
+                        {
+                            ChangablePawns.forEach((value,index) => {
+                                if(value === PeiceID)
+                                {
+                                    gsap.to(document.querySelector(".PWW"),{opacity : 1 , duration : 0.2 , ease : Power4.easeInOut});
+                                    document.querySelectorAll(".blocks").forEach((value,index) => {value.classList.add("noEvents")});
+                                    document.querySelectorAll(".white_Pw_choices").forEach((value,index) => {if(value.classList.contains("noEvents")){value.classList.remove("noEvents")}});
+                                    
+                                }
+                            })
+                            let UpdatedChangablePawns = ChangablePawns.filter((value,index) => {
+                                if(value === PeiceID || value === opponentID){return false}else{return true}
+                            })
+
+                            ChangablePawns = UpdatedChangablePawns;
+                        }
+                }
                 
                 if(colorofPeice === "white"){turns.push("black")}
                 if(colorofPeice === "black"){turns.push("white")}
@@ -1019,8 +1073,6 @@ export const ActiveblockMover = () => {
                 Pw();Hr();Qn();El();Kn();Cm();
                 let mainindex = index;
                 if(value.classList.contains("Active")){
-
-
 
                     if(turns[turns.length - 1] === "white"){
                         if(value.classList.contains("whiteP")){
@@ -1149,6 +1201,9 @@ document.querySelectorAll(".blocks").forEach((value,index) => {
 
 document.querySelector(".Restart").addEventListener('click',()=> {
 
+    document.querySelectorAll(".dfss").forEach((Value,index) => {
+        Value.firstElementChild.setAttribute("src" , "")
+    })
     // first default the chess game Peices
     document.querySelectorAll(".blocks").forEach((value,index) => {
         if(value.classList.contains("Active")){value.classList.remove("Active")}
@@ -1261,6 +1316,18 @@ let A = () => {
 }
 
 //so i think this is the most which i could have done it 
+
+document.querySelectorAll(".white_Pw_choices").forEach((Value,index) => {
+    Value.addEventListener('click',() => {
+        NewTypeofTransform_white = undefined;
+        NewTypeofTransform_white = Value.getAttribute("Type");
+        //console.log("you clicked me")
+        document.querySelectorAll(".white_Pw_choices").forEach((value,index) => {value.classList.add("noEvents");
+            gsap.to(document.querySelector(".PWW"),{opacity : 0 , duration : 0.2 , ease : Power4.easeInOut})
+        })
+        document.querySelectorAll(".blocks").forEach((value,index) => {value.classList.remove("noEvents")})
+    })
+})
 
 
 
